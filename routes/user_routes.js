@@ -1,11 +1,12 @@
 import express from 'express'
 const route = express.Router()
-import { registerUser,getUser } from '../controller/user_controller.js'
+import { registerUser,getUser,authUser } from '../controller/user_controller.js'
 
 //route.get('/')
 
-route.post('/',registerUser)
-route.get('/',getUser)
+route.post('/signup',registerUser)
+route.get('/fetch',getUser)
+route.get('/signin',authUser)
 
 
 
