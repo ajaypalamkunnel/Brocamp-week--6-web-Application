@@ -25,13 +25,19 @@ export const registerUser = async (req, res) => {
     
     const newUser = await user.save();
     console.log("new user : ", newUser);
+
+    req.session.user = {
+      id: newUser._id,
+      username: newUser.username,
+      email: newUser.email
+    };
     
     return res.status(200).json({
       errorcode: 0,
       status: true,
       msg: "User created successfully",
       data: newUser,
-      redirectUrl: '/signup'
+      redirectUrl: 'user/home'
       
     });
     
@@ -58,6 +64,22 @@ export const registerUser = async (req, res) => {
     });
   }
 };
+
+
+export const getHome = async(req,res)=>{
+  try {
+    if (!req.session.user) {
+      return res.redirect('user/signin'); // Redirect to login if user is not authenticated
+    }
+    res.render('home', { user: req.session.user });
+    
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+
+
 
 export const getUser = async (req, res) => {
   try {
@@ -92,15 +114,11 @@ export const authUser = async (req, res) => {
           msg: "User not present",
           data: null,
         });
-    if (user.password !== password)
-      return res
-        .status(200)
-        .json({
-          errorcode: 0,
-          status: false,
-          msg: "password Incorrect",
-          data: "null",
-        });
+        if (user.password !== password) {
+          req.session.passwordwrong = true;
+          return res.render('signin', { errorMessage: 'Password Incorrect' }); // Render the correct error view
+        }
+       
     return res
       .status(200)
       .json({
