@@ -4,8 +4,9 @@ import bodyParser from "body-parser";
 import nocache from 'nocache';
 import dotenv from "dotenv";
 import userRoutes from './routes/user_routes.js'
+import adminRoutes from './routes/admin_route.js'
 import session from "express-session"
-
+import flash from 'connect-flash';
 
 dotenv.config(); // Load environment variables from
 const PORT = process.env.PORT || 5000;
@@ -22,21 +23,23 @@ app.use((session({
   saveUninitialized:false
 })))
 
-app.set("view engine","hbs")
+app.set("view engine","ejs")
 app.use(nocache());
+app.use(flash());
 app.use('/test',(req,res)=>{
   res.render("signup")
 })
-app.use('/signin',(req,res)=>{
-  res.render('signin')
-})
-app.use('/signup',(req,res)=>{
-  res.render('signup')
-})
+// app.use('/signin',(req,res)=>{
+//   res.render('signin')
+// })
+// app.use('/signup',(req,res)=>{
+//   res.render('signup')
+// })
 
 
 
 app.use('/user',userRoutes)
+app.use('/admin',adminRoutes)
 
 mongoose.connect(MONGOURL).then(()=>{
   console.log("Database connected succesfully");
