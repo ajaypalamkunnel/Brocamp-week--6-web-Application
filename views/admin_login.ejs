@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/style/adminLogin.css">
+    <title>Admin Home</title>
     
 </head>
 <body>
     <div class="root">
         <h1>Admin Login page</h1>
         <div class="innerform">
-            <form class="loginform" action="#" method="post">
+            <form class="loginform" action="/admin/adminlogin" method="post">
                 <label class="label" for="username">Username</label><br>
-                <input class="label" type="text" class="username"><br>
-                <label class="label" for="password">password</label><br>
-                <input  class="label"type="password" class="password"><br>
-                <button class="labelb" type="button">Login</button>
+                <input name="username" required class="label" type="text" class="username"><br>
+                <label  class="label" for="password">password</label><br>
+                <input required name="password"  class="label"type="password" class="password"><br>
+                
+                <button class="labelb" type="submit">Log in</button>
 
 
             </form>

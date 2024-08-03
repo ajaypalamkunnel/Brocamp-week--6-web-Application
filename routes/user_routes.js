@@ -15,9 +15,6 @@ route.get('/signout',signOut)
 
 
 
-route.get('')
-
-
 //when we use default export the entire content of the 
 //file is export some times its not safe
 export default route

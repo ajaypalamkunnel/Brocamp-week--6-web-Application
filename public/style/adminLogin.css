@@ -32,5 +32,6 @@ button.labelb{
     width: 100px;
     border-radius: 3px;
     border: 0px;
+    cursor: pointer;
     background-color: rgb(28, 126, 11);
 }

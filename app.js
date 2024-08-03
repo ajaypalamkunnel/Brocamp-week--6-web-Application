@@ -16,7 +16,7 @@ const app = express();
 //app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static("public"))
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true   }));
 app.use((session({
   secret: 'adfdfd343sdf',
   resave:false,
@@ -29,14 +29,7 @@ app.use(flash());
 app.use('/test',(req,res)=>{
   res.render("signup")
 })
-// app.use('/signin',(req,res)=>{
-//   res.render('signin')
-// })
-// app.use('/signup',(req,res)=>{
-//   res.render('signup')
-// })
-
-
+ 
 
 app.use('/user',userRoutes)
 app.use('/admin',adminRoutes)

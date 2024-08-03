@@ -126,12 +126,6 @@ export const authUser = async (req, res) => {
       return res.render("signin", { message: message[0] });
     }
 
-    // if (req.session.message) {
-    //   const message = req.session.message;
-    //   delete req.session.message; // Clear the message after retrieving it
-    //   return res.render("signin", { message: message });
-    // }
-
     if (req.session.user) {
       console.log("hi guyss iam session");
       return res.redirect("/user/home");
