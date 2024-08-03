@@ -99,6 +99,8 @@ export const updateUser = (req, res) => {
     }
 
     const id = req.params.id;
+    const username = req.body.username
+    console.log(username)
     console.log('User ID:', id);
     console.log('Request Body:', req.body);
 

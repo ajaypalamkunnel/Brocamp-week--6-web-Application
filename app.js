@@ -16,7 +16,7 @@ const app = express();
 //app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static("public"))
-app.use(bodyParser.urlencoded({ extended: true   }));
+app.use(express.urlencoded({ extended: true   }));
 app.use((session({
   secret: 'adfdfd343sdf',
   resave:false,
