@@ -10,9 +10,7 @@ export const registerGet = async (req, res) => {
 
 export const registerUser = async (req, res) => {
   try {
-    // console.log("inside register user");
-    // console.log("Received data: ", JSON.stringify(req.body, null, 2)); // Debugging statement
-
+   
     const { username, password, email, phone } = req.body; // Destructure the properties
     //console.log("hello  ",username);
     if (!username || !password || !email) {

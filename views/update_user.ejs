@@ -18,13 +18,15 @@
           <h2 class="text-dark">update User</h2>
           <span class="text-light">Use the below form to Update acoount</span>
       </div>
-
-      <form id="signupForm" method="post" action="#">
+      <form id="updateForm" method="post" action="/admin/updateUser/<%= user._id %>">
+      
         <div class="form-group">
+          <input type="hidden" name="_method" value="PUT">
           <label for="username">Username</label>
           <input
             type="text"
             class="form-control"
+            value="<%= user.username %>"
             name="username"
             id="username"
             placeholder="Username" 
@@ -37,6 +39,7 @@
           <input
             type="password"
             class="form-control"
+            value="<%= user.password %>"
             name="password"
             id="password"
             placeholder="Password"
@@ -51,6 +54,7 @@
             class="form-control"
             name="email"
             id="email"
+            value="<%= user.email %>"
             placeholder="Email"
             required
           />
@@ -62,6 +66,7 @@
             type="text"
             class="form-control"
             name="phone"
+            value="<%= user.phone %>"
             id="phone"
             placeholder="Phone"
           />
@@ -70,7 +75,7 @@
         <div class="form-group">
           <p class="text-danger" id="error-msg"></p>
           <p class="text-success" id="success-msg"></p>
-          <button class="btn" type="submit">Sign Up</button>
+          <button class="btn" type="submit">Update</button>
         </div>
       </form>
 

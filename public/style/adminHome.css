@@ -2,101 +2,114 @@
 
 /* General styles for dark mode */
 body {
-    background-color: #000; /* Black background */
-    color: #fff; /* White text color */
-    font-family: Arial, sans-serif;
-  }
-  
-  a {
-    color: #fff; /* White color for links */
-  }
-  
-  a:hover {
-    color: #ddd; /* Light gray on hover */
-  }
-  
-  /* Header styles */
-  header {
-    background-color: #111; /* Darker background for header */
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  header .nav-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  header .nav-brand:hover {
-    color: #ddd;
-  }
-  
-  /* Main section styles */
-  #site-main {
-    padding: 2rem 0;
-  }
-  
-  .box-nav a {
-    background-color: #222; /* Dark background for buttons */
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-  }
-  
-  .box-nav a:hover {
-    background-color: #444; /* Darker on hover */
-  }
-  
-  /* Table styles */
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-  }
-  
-  .table th, .table td {
-    padding: 1rem;
-    border: 1px solid #333; /* Dark border */
-  }
-  
-  .table th {
-    background-color: #222; /* Dark header background */
-  }
-  
-  .table tbody tr {
-    background-color: #111; /* Slightly lighter row background */
-  }
-  
-  .table tbody tr:hover {
-    background-color: #333; /* Highlight row on hover */
-  }
-  
-  .text-gradient {
-    background: linear-gradient(90deg, #ff8c00, #ff0080);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .btn {
-    display: inline-block;
-    margin: 0 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .btn.border-shadow {
-    border: 1px solid #fff;
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-  }
-  
-  .btn.update:hover {
-    background-color: #ffd43b;
-  }
-  
-  .btn.delete:hover {
-    background-color: #fa0000;
-  }
-  
+  background-color: #000; /* Black background */
+  color: #fff; /* White text color */
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #fff; /* White color for links */
+}
+
+a:hover {
+  color: #ddd; /* Light gray on hover */
+}
+
+/* Header styles */
+header {
+  background-color: #111; /* Darker background for header */
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+header .nav-brand:hover {
+  color: #ddd;
+}
+
+/* Main section styles */
+#site-main {
+  padding: 2rem 0;
+}
+
+.box-nav a {
+  background-color: #222; /* Dark background for buttons */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.box-nav a:hover {
+  background-color: #444; /* Darker on hover */
+}
+
+/* Table styles */
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh; /* Adjust based on your requirement */
+  padding: 2rem;
+}
+
+.table-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+.table th, .table td {
+  padding: 1rem;
+  border: 1px solid #333; /* Dark border */
+}
+
+.table th {
+  background-color: #222; /* Dark header background */
+}
+
+.table tbody tr {
+  background-color: #111; /* Slightly lighter row background */
+}
+
+.table tbody tr:hover {
+  background-color: #333; /* Highlight row on hover */
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #ff8c00, #ff0080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn.border-shadow {
+  border: 1px solid #fff;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.btn.update:hover {
+  background-color: #ffd43b;
+}
+
+.btn.delete:hover {
+  background-color: #fa0000;
+}
