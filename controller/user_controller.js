@@ -2,10 +2,10 @@ import userModel from "../model/user_model.js";
 
 export const registerGet = async (req, res) => {
   try {
-    if(!req.session.user){
-      res.render("signup"); 
-    }else{
-      res.redirect("/user/home")
+    if (!req.session.user) {
+      res.render("signup");
+    } else {
+      res.redirect("/user/home");
     }
   } catch (error) {
     console.log(error.message);
@@ -105,12 +105,18 @@ export const getUser = async (req, res) => {
 
 export const sigin = (req, res) => {
   try {
-    if(!req.session.user){
-      res.render("signin");
-    }else{
-      res.redirect("/user/home")
+    if (!req.session.user) {
+  
+      const mess = req.session.message;
+      if (req.session.message) {
+        req.session.message = ''
+        res.render("signin", { errorMessage: mess });
+      } else {
+        res.render("signin", { errorMessage: "" });
+      }
+    } else {
+      res.redirect("/user/home");
     }
-    
   } catch (error) {
     console.log(error.message);
   }
@@ -138,11 +144,14 @@ export const authUser = async (req, res) => {
     }
 
     if (!user) {
-      return res.render("signin", { errorMessage: "Username does not exist" });
+      req.session.message = "Username does not exist";
+      return res.redirect("/user/signin");
+      // return res.render("signin", { errorMessage: "Username does not exist" });
     }
 
     if (user.password !== password) {
       req.session.passwordwrong = true;
+      req.session.message = "Username does not exist";
       return res.render("signin", { errorMessage: "Password Incorrect" });
     }
 
