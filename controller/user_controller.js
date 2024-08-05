@@ -2,7 +2,11 @@ import userModel from "../model/user_model.js";
 
 export const registerGet = async (req, res) => {
   try {
-    res.render("signup");
+    if(!req.session.user){
+      res.render("signup"); 
+    }else{
+      res.redirect("/user/home")
+    }
   } catch (error) {
     console.log(error.message);
   }
@@ -10,7 +14,6 @@ export const registerGet = async (req, res) => {
 
 export const registerUser = async (req, res) => {
   try {
-   
     const { username, password, email, phone } = req.body; // Destructure the properties
     //console.log("hello  ",username);
     if (!username || !password || !email) {
@@ -102,7 +105,12 @@ export const getUser = async (req, res) => {
 
 export const sigin = (req, res) => {
   try {
-    res.render("signin");
+    if(!req.session.user){
+      res.render("signin");
+    }else{
+      res.redirect("/user/home")
+    }
+    
   } catch (error) {
     console.log(error.message);
   }
@@ -115,7 +123,7 @@ export const authUser = async (req, res) => {
     const { username, password } = req.body;
     let user = await userModel.findOne({ username: username });
 
-    console.log("this is user : ", user);
+    //console.log("this is user : ", user);
 
     const message = req.flash("message");
     console.log("inside auth == ", message);

@@ -5,16 +5,12 @@
     <td><%= user.email %></td>
     <td><%= user.phone %></td>
     <td>
-      <!-- update -->
       <a href="/admin/updateUserget?id=<%= user._id %>" class="btn border-shadow update">
-        <span class="text-gradient">update
-          <i class="fa-solid fa-pencil" style="color: #ffd43b"></i>
-        </span>
-      </a><br>  
-      <a href="deleteUser/<%= user._id %>" class="btn border-shadow delete">
-        <span class="text-gradient">delete
-          <i class="fa-solid fa-trash" style="color: #fa0000;"></i>
-        </span>
+        <span class="text-gradient">update <i class="fa-solid fa-pencil" style="color: #ffd43b"></i></span>
+      </a>
+      <br />
+      <a type="button" onclick="deleteUser()" href="#" class="btn border-shadow delete" data-id="<%= user._id %>">
+        <span class="text-gradient">delete <i class="fa-solid fa-trash" style="color: #fa0000"></i></span>
       </a>
     </td>
   </tr>
