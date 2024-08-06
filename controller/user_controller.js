@@ -103,13 +103,14 @@ export const getUser = async (req, res) => {
   }
 };
 
+
+//login page rendering 
 export const sigin = (req, res) => {
   try {
     if (!req.session.user) {
-  
       const mess = req.session.message;
       if (req.session.message) {
-        req.session.message = ''
+        req.session.message = "";
         res.render("signin", { errorMessage: mess });
       } else {
         res.render("signin", { errorMessage: "" });
@@ -122,6 +123,8 @@ export const sigin = (req, res) => {
   }
 };
 
+
+//user login authentication
 export const authUser = async (req, res) => {
   try {
     console.log("inside auth == ", req.session.message);
