@@ -113,3 +113,29 @@ header .nav-brand:hover {
 .btn.delete:hover {
   background-color: #fa0000;
 }
+
+/* Styles for the search box */
+.search-box {
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: #111; /* Dark background for the search box */
+  color: #fff;
+  width: 120px; /* Adjust as needed */
+}
+
+/* Styles for the search button */
+.search-btn {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #222; /* Dark background for the button */
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #444; /* Darker on hover */
+}

@@ -5,39 +5,55 @@
 <!-- main section -->
 <main id="site-main">
   <div class="container">
-    <div style="display: flex; flex-direction:row; justify-content: space-around;" class="box-nav ">
-      <a href="addUser" class="border-shadow">
+    <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;" class="box-nav">
+      <!-- New User Button -->
+      <a href="addUser" class="btn border-shadow">
         <span class="text-gradient">
           New User <i class="fa-solid fa-user" style="color: #ffffff"></i>
         </span>
       </a>
-      <a href="adminLogout" class="border-shadow">
+
+      <!-- Search Form -->
+      <form id="searchForm" action="/admin/search" method="GET" style="display: flex; align-items: center;">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search by username or email"
+          style="padding: 0.5rem; border-radius: 5px; border: 1px solid #fff; background-color: #222; color: #fff;"
+        />
+        <button type="submit" class="btn border-shadow" style="margin-left: 0.5rem;">
+          <span class="text-gradient">Search</span>
+        </button>
+      </form>
+
+      <!-- Log Out Button -->
+      <a href="adminLogout" class="btn border-shadow">
         <span class="text-gradient">
           Log out <i class="fa-solid fa-user" style="color: #ffffff"></i>
         </span>
       </a>
     </div>
-    </div>
+  </div>
 
-    <div class="table-container">
-      <div class="table-wrapper">
-        <form action="/" method="post">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%- include('include/_show', { users: users }) %>
-            </tbody>
-          </table>
-        </form>
-      </div>
+  <div class="table-container">
+    <div class="table-wrapper">
+      <form action="/" method="post">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- include('include/_show', { users: users }) %>
+          </tbody>
+        </table>
+      </form>
     </div>
   </div>
 </main>

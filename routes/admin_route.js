@@ -11,6 +11,7 @@ import {
   deleteUser,
   registerUserByAdmin,
   adminLogout,
+  searchUser
 } from "../controller/admin_controller.js";
 import { registerUser } from "../controller/user_controller.js";
 
@@ -20,10 +21,12 @@ adminroute.get("/addUser", getAddUser);
 adminroute.get("/updateUserget", getUpdate);
 adminroute.get("/adminlogout", adminLogout);
 adminroute.get("/getUsers", getUsers);
+adminroute.get('/search', searchUser);
 
 adminroute.post("/adminlogin", loginAdminAuth);
 adminroute.post("/signup", registerUserByAdmin);
 adminroute.put("/updateUser/:id", updateUser);
 adminroute.delete("/deleteUser/:id", deleteUser);
+
 
 export default adminroute;

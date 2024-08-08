@@ -255,3 +255,38 @@ export const registerUserByAdmin = async (req, res) => {
     });
   }
 };
+
+
+export const searchUser = async (req, res) => {
+  try {
+    // Get the search query from the request
+    const searchQuery = req.query.search;
+
+   //no search query redirect to home
+    if (!searchQuery) {
+      return res.redirect('/admin/adminHome');
+    }
+
+   //feathing from database
+    const users = await userModel.find({
+      $or: [
+        { username: new RegExp(searchQuery, 'i') }, // Case-insensitive search for username
+        { email: new RegExp(searchQuery, 'i') }     // Case-insensitive search for email
+      ]
+    });
+
+    // searched response 
+    if (req.session.user) {
+      res.render("admin_home", { users }); // Render the admin_home view with the filtered users data
+    } else {
+      res.redirect("adminlogin"); // Redirect to the admin login page if not authenticated
+    }
+  } catch (err) {
+    console.error("Error searching for users:", err.message);
+    res.status(500).send({
+      message: "Error searching for users",
+      error: err.message,
+    });
+  }
+};
+
