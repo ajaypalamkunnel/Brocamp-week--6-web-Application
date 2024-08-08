@@ -38,7 +38,7 @@ export const getAdminHome = async (req, res) => {
     if (req.session.user) {
       res.render("admin_home", { users }); // Render the admin_home view with users data
     } else {
-      res.redirect("/adminlogin");
+      res.redirect("adminlogin");
     }
   } catch (err) {
     console.error("Error fetching admin home data:", err.message);
@@ -64,9 +64,17 @@ export const getUpdate = async (req, res) => {
   console.log(id);
 
   try {
+    
     const user = await userModel.findOne({ _id: id });
 
-    res.render("update_user", { user: user });
+    if(req.session.user){
+      res.render("update_user", { user: user });
+
+    }else{
+      res.redirect("adminlogin");
+    }
+
+   
   } catch (err) {
     console.error("Error fetching admin home data:", err.message);
     res.status(500).send({
@@ -202,10 +210,8 @@ export const updateUser = (req, res) => {
 
 export const registerUserByAdmin = async (req, res) => {
   try {
-    console.log("I am inside registerUserBAdmin");
+    const { username, password, email, phone } = req.body;
 
-    const { username, password, email, phone } = req.body; // Destructure the properties
-    //console.log("hello  ",username);
     if (!username || !password || !email) {
       return res.status(400).json({
         errorcode: 1,
@@ -215,16 +221,21 @@ export const registerUserByAdmin = async (req, res) => {
     }
 
     let user = new userModel({
-      username: username,
-      password: password,
-      email: email,
-      phone: phone,
+      username,
+      password,
+      email,
+      phone,
     });
 
     const newUser = await user.save();
-    console.log("new user : ", newUser);
+    console.log("New user:", newUser);
 
-    return res.redirect("/admin/adminHome");
+    // Send a success response for AJAX requests
+    return res.status(200).json({
+      status: true,
+      msg: "User created successfully",
+    });
+
   } catch (error) {
     console.log(error.message);
 
