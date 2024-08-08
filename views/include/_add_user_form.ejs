@@ -1,54 +1,115 @@
 <form id="signupForm" method="post" action="/admin/signup">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        name="username"
-        id="username"
-        placeholder="Username"
-        required
-      />
-    </div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      name="username"
+      id="username"
+      placeholder="Username"
+      required
+    />
+    <span class="error" id="username-error"></span>
+  </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        name="password"
-        id="password"
-        placeholder="Password"
-        required
-      />
-    </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      id="password"
+      placeholder="Password"
+      required
+    />
+    <span class="error" id="password-error"></span>
+  </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        name="email"
-        id="email"
-        placeholder="Email"
-        required
-      />
-    </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      name="email"
+      id="email"
+      placeholder="Email"
+      required
+    />
+    <span class="error" id="email-error"></span>
+  </div>
 
-    <div class="form-group">
-      <label for="phone">Phone</label>
-      <input
-        type="text"
-        class="form-control"
-        name="phone"
-        id="phone"
-        placeholder="Phone"
-      />
-    </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input
+      type="text"
+      class="form-control"
+      name="phone"
+      id="phone"
+      placeholder="Phone"
+    />
+    <span class="error" id="phone-error"></span>
+  </div>
 
-    <div class="form-group">
-      <p class="text-danger" id="error-msg"></p>
-      <p class="text-success" id="success-msg"></p>
-      <button class="btn" type="submit">Sign Up</button>
-    </div>
-  </form>
+  <div class="form-group">
+    <p class="text-danger" id="error-msg"></p>
+    <p class="text-success" id="success-msg"></p>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+  </div>
+</form>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Clear previous error messages
+    document.getElementById('username-error').textContent = '';
+    document.getElementById('password-error').textContent = '';
+    document.getElementById('email-error').textContent = '';
+    document.getElementById('phone-error').textContent = '';
+    document.getElementById('error-msg').textContent = '';
+    document.getElementById('success-msg').textContent = '';
+
+    // Validate form fields
+    let isValid = true;
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+
+    // Username validation
+    if (username.trim() === '') {
+      document.getElementById('username-error').textContent = 'Username is required';
+      isValid = false;
+    }
+
+    // Password validation
+    if (password.trim() === '') {
+      document.getElementById('password-error').textContent = 'Password is required';
+      isValid = false;
+    }
+
+    // Email validation
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+      document.getElementById('email-error').textContent = 'Invalid email format';
+      isValid = false;
+    }
+
+    // Phone validation (optional)
+    if (phone && !/^\d{10}$/.test(phone)) {
+      document.getElementById('phone-error').textContent = 'Phone number must be 10 digits';
+      isValid = false;
+    }
+
+    // If form is valid, submit it
+    if (isValid) {
+      // Here you can add your form submission logic
+      // For example, using AJAX to send form data to the server
+      document.getElementById('success-msg').textContent = 'Form submitted successfully!';
+      // document.getElementById('signupForm').submit(); // Uncomment to enable form submission
+    } else {
+      document.getElementById('error-msg').textContent = 'Please correct the errors and try again';
+    }
+  });
+</script>

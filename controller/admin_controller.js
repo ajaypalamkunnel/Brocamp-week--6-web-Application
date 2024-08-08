@@ -146,16 +146,17 @@ export const deleteUser = (req, res) => {
       if (!data) {
         res
           .status(404)
-          .send({ message: `cannot delete with ${id} May be id is wrong` });
+          .send({ message: `Cannot delete user with ID ${id}. Maybe ID is incorrect.` });
       } else {
         res.send({
+          
           message: "User was deleted successfully",
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "could not delete User with id = " + id,
+        message: "Could not delete user with ID = " + id,
       });
     });
 };

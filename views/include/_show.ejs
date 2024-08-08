@@ -9,9 +9,41 @@
         <span class="text-gradient">update <i class="fa-solid fa-pencil" style="color: #ffd43b"></i></span>
       </a>
       <br />
-      <a type="button" onclick="deleteUser()" href="#" class="btn border-shadow delete" data-id="<%= user._id %>">
+      <a type="button" href="#" class="btn border-shadow delete" data-id="<%= user._id %>">
         <span class="text-gradient">delete <i class="fa-solid fa-trash" style="color: #fa0000"></i></span>
-      </a>
+    </a>
+    
     </td>
   </tr>
 <% }) %>
+<script>
+  document.querySelectorAll('.delete').forEach(button => {
+      button.addEventListener('click', function (event) {
+          event.preventDefault(); // Prevent default anchor behavior
+          const userId = this.getAttribute('data-id');
+          
+          // Show a confirmation dialog
+          const confirmed = confirm("Are you sure you want to delete this user?");
+          if (confirmed) {
+              fetch(`/admin/deleteUser/${userId}`, {
+                  method: 'DELETE',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              })
+              .then(response => response.json())
+              .then(data => {
+                  if (data.message) {
+                      alert(data.message);
+                      location.reload();
+                      // Optionally, you can also remove the user element from the DOM here
+                      // document.getElementById(`user-${userId}`).remove();
+                  } else {
+                      alert('Failed to delete user');
+                  }
+              })
+              .catch(error => console.error('Error:', error));
+          }
+      });
+  });
+  </script>
