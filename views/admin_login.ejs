@@ -11,6 +11,9 @@
     <div class="root">
         <h1>Admin Login page</h1>
         <div class="innerform">
+            <% if (typeof error !== "undefined") { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
             <form class="loginform" action="/admin/adminlogin" method="post">
                 <label class="label" for="username">Username</label><br>
                 <input name="username" required class="label" type="text" class="username"><br>

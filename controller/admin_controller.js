@@ -100,6 +100,10 @@ export const loginAdminAuth = async (req, res) => {
         username: username,
       };
       res.redirect("adminHome");
+    }else{
+      return res.status(401).render("admin_login", {
+        error: "Invalid username or password. Please try again.",
+      });
     }
   } catch (error) {
     console.error("Error: ", error.message);
