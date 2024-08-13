@@ -202,6 +202,7 @@ export const updateUser = (req, res) => {
         });
       } else {
         res.send(data);
+       // res.redirect('adminHome')
       }
     })
     .catch((err) => {
