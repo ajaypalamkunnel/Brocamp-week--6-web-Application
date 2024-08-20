@@ -51,7 +51,13 @@ export const getAdminHome = async (req, res) => {
 
 export const getAddUser = async (req, res) => {
   try {
-    res.render("add_user");
+   if(req.session.user){
+     
+     res.render("add_user");
+   }else{
+    res.redirect("adminlogin");
+   }
+
   } catch (error) {
     console.log(error);
   }
